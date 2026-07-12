@@ -43,6 +43,7 @@ class Generation:
     # Raw metadata
     workflow_json: str = ""
     source_tool: str = ""
+    parser_name: str = ""
 
     def to_dict(self) -> dict:
         d = asdict(self)

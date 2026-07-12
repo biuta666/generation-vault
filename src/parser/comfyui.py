@@ -34,6 +34,7 @@ class ComfyUIParser(BaseParser):
         gen = Generation(
             image_path=str(Path(file_path).resolve()),
             source_tool="ComfyUI",
+            parser_name="ComfyUI",
         )
 
         chunks = self._read_png_chunks(file_path)
