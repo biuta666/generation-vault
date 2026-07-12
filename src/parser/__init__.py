@@ -1,2 +1,2 @@
-from .base import BaseParser, Generation
-from .comfyui import ComfyUIParser
+from parser.base import BaseParser, Generation
+from parser.comfyui import ComfyUIParser
