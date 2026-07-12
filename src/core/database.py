@@ -163,3 +163,36 @@ class Database:
 
     def close(self):
         self.conn.close()
+
+    # ---- M3: Query (仅 FTS5 关键字搜索) ----
+
+    def query(self, keyword: str, limit: int = 20) -> List[Generation]:
+        """FTS5 全文搜索 prompt/negative/model_name/lora_json"""
+        rows = self.conn.execute(
+            """SELECT * FROM generations
+               WHERE id IN (SELECT rowid FROM generations_fts WHERE generations_fts MATCH ?)
+               ORDER BY id DESC LIMIT ?""",
+            (keyword, limit)
+        ).fetchall()
+        return [self._row_to_gen(r) for r in rows]
+
+    def query_by_model(self, model_name: str, limit: int = 20) -> List[Generation]:
+        rows = self.conn.execute(
+            "SELECT * FROM generations WHERE model_name LIKE ? ORDER BY id DESC LIMIT ?",
+            (f"%{model_name}%", limit)
+        ).fetchall()
+        return [self._row_to_gen(r) for r in rows]
+
+    def query_by_lora(self, lora_name: str, limit: int = 20) -> List[Generation]:
+        rows = self.conn.execute(
+            "SELECT * FROM generations WHERE lora_json LIKE ? ORDER BY id DESC LIMIT ?",
+            (f"%{lora_name}%", limit)
+        ).fetchall()
+        return [self._row_to_gen(r) for r in rows]
+
+    def query_by_seed(self, seed: int, limit: int = 20) -> List[Generation]:
+        rows = self.conn.execute(
+            "SELECT * FROM generations WHERE seed = ? ORDER BY id DESC LIMIT ?",
+            (seed, limit)
+        ).fetchall()
+        return [self._row_to_gen(r) for r in rows]
