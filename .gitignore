@@ -1,0 +1,29 @@
+# Data
+data/*.db
+data/*.db-journal
+data/*.db-wal
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Strategy docs (internal)
+AI_METADATA_STRATEGY.md
+DAY0_ProblemValidation.md
+THREE_CORE_STRATEGY.md
+PHASE_1.5_UserValidation.md
+
+# Streamlit
+.streamlit/secrets.toml

@@ -1,49 +1,85 @@
-# Generation Vault — Preview
+# Generation Vault
 
-> Looking for 5 ComfyUI power users to test this locally.
+> Never lose a ComfyUI generation again.  
+> Your ComfyUI memory — search every generation you've ever made.
 
 ---
 
 ## What it does
 
-Drag a ComfyUI-generated PNG → auto-extracts **prompt, model name, LoRA, seed, sampler, steps** → stores in a searchable local database. Find any past generation by keyword.
+Drop a ComfyUI PNG → metadata appears instantly (prompt, model, LoRA, seed, sampler, steps) → stored in a local database. Search everything by keyword later.
+
+**No cloud. No API. Everything stays on your machine.**
 
 ---
 
-## Quick Start (1 minute)
+## Quick Start
 
-1. Download `generation-vault.zip` from [Releases](../../releases)
-2. Unzip anywhere
-3. Run `start.bat`
-4. Open `http://localhost:8501`
-5. Drop a ComfyUI PNG
+```bash
+pip install -r requirements.txt
+streamlit run src/ui/app.py
+# Open http://localhost:8501
+# Drop a ComfyUI PNG
+```
 
-**No Python. No pip. No git clone.**
+Or download the portable zip from [Releases](https://github.com/biuta666/generation-vault/releases) and run `start.bat` — no Python setup needed.
 
 ---
 
-## Looking for testers
+## How it works
 
-If you use ComfyUI every day, I'd love to watch you use it for 10 minutes.
+```
+Drop PNG → ComfyUIParser extracts metadata → SQLite (FTS5) → Search UI
+```
 
-DM me or open an Issue — tell me what breaks.
+- **Parser** reads the workflow JSON embedded in every ComfyUI PNG
+- **Database** stores prompt, negative, model, LoRA, seed, CFG, sampler, steps
+- **Search** by keyword (FTS5), model name, LoRA name, or seed
+- **UI** is a local Streamlit app — drag, search, find
+
+---
+
+## Why this exists
+
+If you use ComfyUI, you've had this moment:
+
+- "Which LoRA did I use for that face?"
+- "What seed gave me that perfect composition?"
+- "I remember the prompt was about a sunset, but I can't find it."
+
+Generation Vault is the answer. One drag. Found.
 
 ---
 
 ## Current
 
 - ✅ ComfyUI PNG metadata parsing
-- ✅ Local SQLite database
+- ✅ Local SQLite database (FTS5 full-text search)
 - ✅ Search by prompt / model / LoRA / seed
-- ✅ Web UI (Streamlit)
+- ✅ Clean Streamlit UI — Import, Search, Detail, Health
 
-## NOT included (yet)
+## Not included (yet)
 
-- ❌ AI / cloud / login
-- ❌ Video / Storyboard / Timeline
+- ❌ AI / cloud / login / accounts
+- ❌ A1111 parser (planned)
+- ❌ Video / Timeline
+
+---
+
+## Tech
+
+Pure Python + Streamlit. Zero external AI dependencies. Zero API calls. Zero data leaves your computer.
+
+`Pillow` reads the PNG chunks. `sqlite3` (built-in) stores everything. `streamlit` renders the UI.
+
+---
+
+## Early preview. Looking for feedback.
+
+If you use ComfyUI daily, try it. Open an Issue if something breaks — or tell me what you'd want next.
 
 ---
 
 ## License
 
-Source-available preview. Not MIT (yet).
+MIT
