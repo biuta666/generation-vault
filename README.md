@@ -5,24 +5,25 @@
 
 ---
 
+## Quick Start — 30 seconds
+
+```
+Download → Unzip → Double-click → Drag PNG → Found
+```
+
+**No Python. No pip. No terminal.**
+
+[Download portable zip](https://github.com/biuta666/generation-vault/releases) (80 MB, includes everything) → unzip → double-click `start.bat` → browser opens → drop a ComfyUI PNG.
+
+Or click **"Try Demo"** to see it work without any PNG.
+
+---
+
 ## What it does
 
 Drop a ComfyUI PNG → metadata appears instantly (prompt, model, LoRA, seed, sampler, steps) → stored in a local database. Search everything by keyword later.
 
 **No cloud. No API. Everything stays on your machine.**
-
----
-
-## Quick Start
-
-```bash
-pip install -r requirements.txt
-streamlit run src/ui/app.py
-# Open http://localhost:8501
-# Drop a ComfyUI PNG
-```
-
-Or download the portable zip from [Releases](https://github.com/biuta666/generation-vault/releases) and run `start.bat` — no Python setup needed.
 
 ---
 
@@ -77,6 +78,8 @@ Pure Python + Streamlit. Zero external AI dependencies. Zero API calls. Zero dat
 ## Early preview. Looking for feedback.
 
 If you use ComfyUI daily, try it. Open an Issue if something breaks — or tell me what you'd want next.
+
+**Try Demo:** Click the "Try Demo" button on first launch — no need to find a ComfyUI PNG.
 
 **Price:** Free during preview. Future price: **$39 one-time** (no subscriptions, no cloud).
 
