@@ -78,6 +78,8 @@ Pure Python + Streamlit. Zero external AI dependencies. Zero API calls. Zero dat
 
 If you use ComfyUI daily, try it. Open an Issue if something breaks — or tell me what you'd want next.
 
+**Price:** Free during preview. Future price: **$39 one-time** (no subscriptions, no cloud).
+
 ---
 
 ## License
